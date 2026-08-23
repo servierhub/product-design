@@ -1,6 +1,6 @@
 ---
 name: annotate-inject
-description: "Install and verify browser annotation in an existing/user-provided boilerplate (Next.js, Nuxt, Astro, Vite, or port). Trigger not only on explicit annotation requests but automatically before handing off any locally reviewable Product Design build whose project is not a bundled template. The agent must start/reuse the dev server, verify toggle + POST + inbox write, keep it running, and return the URL; never delegate startup commands to the user."
+description: "Install and verify browser annotation in an existing/user-provided boilerplate (Next.js, Nuxt, Astro, Vite, or port) after the user explicitly requests it or confirms the proposed non-trivial codebase change. Bundled Product Design templates already include annotation. The agent starts/reuses the dev server, verifies toggle + POST + inbox write, keeps it running, and returns the URL; never delegate startup commands to the user."
 ---
 
 # Annotate Inject
@@ -11,6 +11,14 @@ The bundled prototype templates (`product-design:get-context` → any framework 
 
 - Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md) and [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
+
+## Consent and early blockers
+
+- Bundled templates already include annotation; never inject a second copy.
+- In an existing or user-provided project, inspect only enough to identify the runtime and explain the route, overlay, and ignore-rule changes. Obtain explicit confirmation **before editing**. An explicit request to install annotation counts as confirmation; a generic build or handoff request does not.
+- If framework signals conflict, ask which runtime is canonical before editing.
+- For static Astro, report that a server/hybrid adapter is required and ask before making that architectural change. Do not install a route that will 404.
+- While consent is pending, the parent workflow may hand off an otherwise verified local build, but must say annotation is not installed. Never claim annotation success until toggle, POST, inbox write, and production behavior have all been checked.
 
 ## How the mechanism works, regardless of framework
 
@@ -40,7 +48,7 @@ Before installing, identify what the existing project actually is — do not ass
 
 ## Install workflow
 
-1. Detect the framework per above. If ambiguous, ask rather than guess — installing the wrong port wastes the user's time confirming it doesn't work.
+1. Detect the framework per above. If ambiguous, ask rather than guess — installing the wrong port wastes the user's time confirming it doesn't work. Apply the consent and early-blocker rules above, and stop before edits until confirmation exists.
 2. Copy the matching assets from `../../assets/annotate/<framework>/` into the target project, adapting destination paths to that project's actual conventions (don't force a foreign convention onto an existing codebase):
 
    | Framework | Assets to copy | Typical destination |

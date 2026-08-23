@@ -1,0 +1,22 @@
+{
+  "evals": [
+    {
+      "id": 1,
+      "name": "existing-project-requires-consent",
+      "prompt": "J'ai déjà une application Next.js. Termine l'écran et rends-le consultable localement.",
+      "expected_output": "Hand off the verified local build, explain annotation changes, and ask for confirmation before injecting them. Do not claim annotation is installed."
+    },
+    {
+      "id": 2,
+      "name": "explicit-install-is-consent",
+      "prompt": "Installe le mécanisme d'annotation dans mon projet Vite existant et vérifie-le.",
+      "expected_output": "Treat the explicit request as consent and claim success only after toggle, POST, inbox write, and production behavior are verified."
+    },
+    {
+      "id": 3,
+      "name": "static-astro-blocker",
+      "prompt": "Ajoute les annotations à ce site Astro configuré avec output: static.",
+      "expected_output": "Do not install a route that will fail. Explain that a server or hybrid adapter is required and ask whether the user approves that change."
+    }
+  ]
+}

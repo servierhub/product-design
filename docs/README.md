@@ -1,21 +1,24 @@
-# docs/ — Références et architecture
+# Documentation Product Design
 
-> Documentation de référence pour l'infrastructure d'exploration agentique du projet Product Design.
+Cette documentation décrit le plugin Product Design présent dans ce dépôt et ses contrats d'exécution.
 
 ## Index
 
-| Document | Description |
-|----------|-------------|
-| [`swe-explore-summary.md`](./swe-explore-summary.md) | Résumé du papier SWE-Explore (arXiv:2606.07297) — résultats et implications |
-| [`agentic-vs-graphrag.md`](./agentic-vs-graphrag.md) | Débat Static GraphRAG vs Agentic Graph Exploration — GraphScout, Graph-R1 |
-| [`architecture-mcp.md`](./architecture-mcp.md) | Architecture MCP : Qdrant MCP officiel + graph-explorer MCP custom |
-| [`primitives-exploration.md`](./primitives-exploration.md) | Les 4 primitives d'exploration : Retrieve, Traverse, Explore, Verify |
+| Document | Contenu |
+|---|---|
+| [architecture.md](architecture.md) | Structure du bundle, skills, dépendances et templates |
+| [workflows.md](workflows.md) | Routage, workflow de conception, gates et preuves attendues |
+| [operations.md](operations.md) | Annotation, user-context, sécurité et handoff |
+| [contributing.md](contributing.md) | Conventions de modification, validation et évaluations |
 
-## Curation
+## Sources normatives
 
-Ces documents sont issus de la veille de recherche et de la conception architecturale. Ils évoluent au fil des découvertes.
+Les docs expliquent le système, mais les contrats exécutables restent :
 
-Ne pas hésiter à :
-- Ajouter de nouvelles références
-- Mettre à jour les synthèses avec les résultats d'évaluations internes
-- Clarifier les décisions architecturales documentées
+- `skills/*/SKILL.md` pour chaque skill ;
+- `references/critical-overrides.md` et `references/communication-protocol.md` pour les règles transversales ;
+- `references/product-decision-gates.md` pour les gates ;
+- `plugin.json` pour l'identité du plugin ;
+- `package.json` et `scripts/validate-*.mjs` pour les validations.
+
+En cas de divergence, corriger la documentation et suivre ces sources.
