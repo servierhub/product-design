@@ -10,11 +10,19 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      AGENT_PLUGINS_ROOT: ${{ github.workspace }}/.agent-plugins
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+      - name: Check out validator plugin
+        uses: actions/checkout@v5
+        with:
+          repository: bioinfornatics/agent-plugins
+          ref: 36ae8b472c542638ebb03e30c6ab59e0ef76a4d8
+          path: .agent-plugins
       - name: Use stable Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24.x
           check-latest: true
