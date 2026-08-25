@@ -3,24 +3,22 @@
   "evals": [
     {
       "id": 1,
-      "name": "new-multistep-journey-boards",
+      "name": "separate-screens-and-pages",
       "prompt": "Crée une application de mentoring où un mentee trouve un mentor et réserve un rendez-vous. Il n'y a aucune maquette existante.",
-      "expected_output": "Generate three embedded 1024x1024 end-to-end journey boards. Each board is one composite image with a regular grid of 4–6 recognizable miniature UI screens, visibly numbered 1–N in reading order, then stop for journey selection.",
+      "expected_output": "Define three journeys and plans, generate one full-size landscape web image per screen for every variant, then create exactly three board pages referencing those files.",
       "assertions": [
-        "contains:1024 x 1024",
-        "contains:complete journey",
-        "contains:miniature UI screens",
-        "contains:number badge",
-        "contains:composite image",
-        "not-contains:Building option",
-        "not-contains:image-to-code"
+        "contains:three",
+        "contains:full-size",
+        "contains:one screen",
+        "contains:board page",
+        "contains:separate"
       ]
     },
     {
       "id": 2,
       "name": "journey-selection-resumes-ideate",
       "prompt": "Je choisis le parcours 2 parmi les trois planches affichées.",
-      "expected_output": "Resolve board 2, record journey selection, create the ordered screen-production plan, and generate one screen at a time without building.",
+      "expected_output": "Resolve board page 2, verify its already-generated screen set, and request approval without building or regenerating the journey.",
       "assertions": [
         "contains:Journey 2 selected",
         "contains:screen",
@@ -54,11 +52,11 @@
       "id": 5,
       "name": "screen-production-continuity",
       "prompt": "Le parcours 3 est choisi. Génère maintenant les écrans détaillés nécessaires.",
-      "expected_output": "Create a 3–6 screen plan with stable IDs, then generate exactly one 1024x1024 screen per call while preserving shell and data continuity.",
+      "expected_output": "Generate exactly one full-size landscape web screen per call for every variant and update board pages from separate files.",
       "assertions": [
-        "contains:screen-production-plan",
-        "contains:one detailed screen",
-        "contains:1024 x 1024"
+        "contains:one full-size screen",
+        "contains:landscape",
+        "contains:board page"
       ]
     },
     {
@@ -74,14 +72,13 @@
     },
     {
       "id": 7,
-      "name": "repair-invalid-board-structure",
-      "prompt": "La première planche générée montre un grand dashboard unique et quatre légendes, mais pas quatre écrans miniatures; les numéros 2 et 3 sont aussi inversés. Continue avec les autres propositions.",
-      "expected_output": "Inspect the pixels, reject this structurally invalid journey board, and regenerate it as one composite image with 4–6 recognizable UI screen miniatures and correct visible sequential numbering before presentation.",
+      "name": "repair-narrow-page",
+      "prompt": "La page-board comprime quatre captures web en quatre colonnes étroites comme du mobile. Corrige-la.",
+      "expected_output": "Reject and rearrange separate source images on a wide scrollable or spacious wrapped canvas.",
       "assertions": [
-        "contains:regenerate",
-        "contains:miniature UI screens",
-        "contains:sequential number",
-        "not-contains:accept this board"
+        "contains:reject",
+        "contains:separate",
+        "contains:wide"
       ]
     }
   ]

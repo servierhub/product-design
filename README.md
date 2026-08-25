@@ -51,12 +51,12 @@ Not every request needs every step. `product-design:index` is the entry point an
 
 1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
 2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
-3. **Choose the journey, then its screens.** For multi-step work, `product-design:ideate` first presents exactly three end-to-end journey boards. After the user selects a journey, it creates an ordered screen plan and generates each screen individually, then waits for screen-set approval. For a genuine single-screen target, it presents three directions for that same screen.
+3. **Choose the journey, then its screens.** For multi-step work, `product-design:ideate` defines three journeys, generates every screen of every variant as a separate full-size image, and creates one board page per variant with the bundled dependency-free journey-board viewer. Variants may generate concurrently in isolated workers, while screens remain sequential inside each variant. After selection, it waits for approval of the existing selected screen set. For a genuine single-screen target, it presents three directions for that same screen.
 4. **Build from the approved sources.** Use `product-design:image-to-code` only after a complete multi-screen source set is approved, or from one selected source for a single-screen target. Use `product-design:url-to-code` for a faithful clone of a live URL.
 5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
 6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
 
-For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated journey boards, detailed screens and raster assets default to 1024 × 1024 and low quality when supported; use another size only for an explicit request or source-fidelity requirement.
+For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Desktop-web concept screens use a landscape target (1536 × 1024 when supported; 1024 × 768 fallback); mobile uses its frozen viewport. Other raster assets default to 1024 × 1024. Request low quality when supported.
 
 The default path for a new interface is therefore:
 
@@ -88,6 +88,44 @@ product-design:index → product-design:get-context → product-design:ideate �
 - **No visual target, no build:** a complete brief or permission to make assumptions does not replace visual selection. Run `product-design:ideate` and wait for the user's choice.
 - **Verification requires evidence:** do not claim visual QA without a rendered capture, and do not claim sharing without a working deployment URL.
 
+### Journey-board viewer
+
+The repository bundles a dependency-free static viewer. Given a JSON manifest with exactly three variants and local image paths, `scripts/build-journey-board.mjs` validates and copies the sources, then emits `index.html` plus one wide, zoomable, drag-to-pan page per variant. Use `scripts/serve-journey-board.mjs --root <review-dir>` for a verified local browser URL. This does not imply that Goose Desktop exposes a native embedded HTML viewer; use one only when that capability is present in the session.
+
+```bash
+node scripts/build-journey-board.mjs --input journeys.json --output journey-review
+node scripts/serve-journey-board.mjs --root journey-review
+```
+
+Minimal manifest shape (exactly `V1`, `V2`, and `V3` are required):
+
+```json
+{
+  "schemaVersion": 1,
+  "title": "Journey comparison",
+  "variants": [
+    {
+      "id": "V1",
+      "title": "Guided journey",
+      "thesis": "Reduce uncertainty through progressive disclosure",
+      "screens": [
+        {
+          "id": "V1-S1",
+          "title": "Entry",
+          "image": "screens/v1-s1.png",
+          "purpose": "Orient the user",
+          "note": "Continue to selection"
+        }
+      ]
+    },
+    { "id": "V2", "title": "Exploratory journey", "screens": [{ "id": "V2-S1", "title": "Explore", "image": "screens/v2-s1.png" }] },
+    { "id": "V3", "title": "Assisted journey", "screens": [{ "id": "V3-S1", "title": "Ask", "image": "screens/v3-s1.png" }] }
+  ]
+}
+```
+
+Image paths are relative to the manifest. PNG, JPEG, WebP, and GIF are accepted; absolute paths, traversal, SVG, and mismatched file signatures are rejected.
+
 ## Runtime Dependencies
 
 This plugin requires the following tools available to goose:
@@ -103,13 +141,13 @@ This plugin requires the following tools available to goose:
 For the complete workflow, install or expose these capabilities to Goose:
 
 - **A Figma-capable plugin or MCP server** — recommended for reading Figma files and frames, inspecting design context, and creating audit boards when explicitly requested. Product Design remains usable without it when screenshots or other visual sources are available.
-- **[image-mcp](https://github.com/bioinfornatics/image-mcp)** — recommended image generator for journey boards, detailed screen concepts, and missing raster assets. Another image-generation provider may be used when it exposes equivalent capabilities.
+- **[image-mcp](https://github.com/bioinfornatics/image-mcp)** — recommended image generator for separate full-size screen concepts and missing raster assets; board pages are assembled from those files. Another image-generation provider may be used when it exposes equivalent capabilities.
 
 These are companion capabilities, not dependencies installed automatically by this plugin. If a requested workflow requires one and no equivalent tool is available, the skill reports the missing capability rather than fabricating a result.
 
 ## Product decision gates
 
-Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation first renders three complete journey boards at one normalized boundary. After selection, it generates the chosen journey one detailed screen at a time and requires approval of the complete set before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
+Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation generates each screen of all three variants separately and assembles one board page per variant. After selection, the selected existing set requires approval before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
 
 ## Optional: project status via Beads
 

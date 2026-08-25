@@ -26,15 +26,15 @@ For multi-persona services, require a shared service boundary, persona lanes, ba
 
 ## G2 — End-to-end journey boards to selected journey
 
-Compare exactly three journey hypotheses at the same boundary and outcome. Each must share user/context, scenario/data, start, end and success criterion, while differing as an interaction strategy. Each candidate must be represented by one complete 1024 × 1024 journey board containing the full ordered path, decisions and critical recovery. Three images showing three separate steps fail this gate.
+Compare exactly three journey hypotheses at the same boundary and outcome. Each must share user/context, scenario/data, start, end and success criterion, while differing as an interaction strategy. For every candidate, define its screen plan, generate every traversed screen as a separate full-size image, then assemble one board page from those files. Three candidates produce three pages. Multi-screen Image Gen composites, sprite sheets, miniature grids and N-column screen images fail.
 
-Weights: need fit 25; success potential 20; friction/cognitive load 15; learnability/recovery 10; product value 10; feasibility 10; risks/assumptions 10. The user selects one complete board. With insufficient evidence, label the choice as an experiment. Save the selected displayed option and board path in .gates/02-journey-selection.md.
+Weights: need fit 25; success potential 20; friction/cognitive load 15; learnability/recovery 10; product value 10; feasibility 10; risks/assumptions 10. The user selects one complete board page. With insufficient evidence, label the choice as an experiment. Save the selected displayed option and board path in .gates/02-journey-selection.md.
 
 ## G3 — Selected journey to approved screen set
 
-Before detailed generation, require an ordered screen-production plan with stable IDs, purpose, entry/exit state, content/data, interaction states, dependencies and board-panel traceability. Generate one detailed screen at a time in journey order. The first accepted screen anchors the visual system; later screens must preserve shell, tokens, typography, imagery, component anatomy and data continuity.
+Before generation, require ordered plans for all three variants. Generate one full-size screen at a time for every variant. The first screen anchors each variant; later screens preserve shell, tokens, typography, imagery, anatomy and data continuity. Board pages reference these files without Image Gen recomposition.
 
-Pass only when every required screen has a visible generated source, the set covers the selected journey end to end, contradictions have been repaired, and the user approves the ordered screen set. A journey board alone cannot pass G3 for a multi-screen build. Save the plan and approval in .gates/03-screen-production-plan.md and .gates/03-visual-selection.md.
+Pass only when every required screen has a visible generated source, the set covers the selected journey end to end, contradictions have been repaired, and the user approves the ordered screen set. A board page or screenshot alone cannot pass G3; the selected variant must resolve to individual approved screen files. Save the plan and approval in .gates/03-screen-production-plan.md and .gates/03-visual-selection.md.
 
 For a genuinely single-screen target, G3 instead compares three visual directions for that same screen using the same content, viewport, state and design-system constraints.
 

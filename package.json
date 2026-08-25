@@ -10,7 +10,8 @@
     "test:bootstrap": "node --test scripts/test-bootstrap.mjs",
     "test:annotations": "node scripts/test-annotation-handlers.mjs",
     "test:user-context": "node scripts/test-user-context.mjs",
-    "test:deterministic": "npm run test:bootstrap && npm run test:annotations && npm run test:user-context",
-    "test": "npm run validate && npm run test:deterministic"
+    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:annotations && npm run test:user-context",
+    "test": "npm run validate && npm run test:deterministic",
+    "test:journey-board": "node --test scripts/test-journey-board.mjs"
   }
 }

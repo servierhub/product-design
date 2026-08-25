@@ -1,28 +1,28 @@
 {
   "skill_name": "ideate",
-  "iteration": 1,
-  "comparison": "repository HEAD vs revised two-stage workflow",
+  "iteration": 2,
+  "comparison": "composite journey boards vs separate-screen board pages",
   "cases": [
     {
       "name": "new-multistep",
       "baseline": {
         "passed": false,
-        "evidence": "Selected journey in prose then proposed three visual directions."
+        "evidence": "Compressed journeys into generated miniature grids."
       },
       "revised": {
         "passed": true,
-        "evidence": "Proposed three distinct complete journey boards with identical boundaries."
+        "evidence": "Generated every full-size screen separately and assembled one page per variant."
       }
     },
     {
       "name": "journey-selection",
       "baseline": {
         "passed": false,
-        "evidence": "Generated three visual directions after board selection."
+        "evidence": "Detailed sources existed only after selection."
       },
       "revised": {
         "passed": true,
-        "evidence": "Created ordered screen plan and one-screen-at-a-time production; no build."
+        "evidence": "Every variant had full sources before selection; selected set proceeded to approval."
       }
     },
     {

@@ -5,7 +5,7 @@
       "id": 1,
       "name": "route-new-multistep",
       "prompt": "@Product Design crée un onboarding bancaire en plusieurs étapes sans maquette.",
-      "expected_output": "Route index → get-context → ideate journey boards; no build before journey and screen-set approvals.",
+      "expected_output": "Route index → get-context → ideate three journeys, separate full-size screen sets and three board pages; no build before journey and screen-set approvals.",
       "assertions": [
         "contains:get-context",
         "contains:ideate",

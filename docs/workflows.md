@@ -21,7 +21,7 @@ Charger `product-design:index` dès que l'utilisateur nomme Product Design ou le
 - `ideate` rend exactement trois alternatives comparables.
 - Une URL de référence doit être capturée et ouverte avant toute génération ou reproduction.
 
-Pour un parcours multi-écrans, chaque alternative d'idéation est un board complet avec étapes ordonnées, décisions et récupération critique. Après le choix utilisateur, produire un plan d'écrans à IDs stables, puis les visuels détaillés un par un. Attendre l'approbation de l'ensemble.
+Pour un parcours multi-écrans, définir le parcours et le plan d'écrans de chacune des trois variantes, générer une image web pleine par écran et par variante, puis créer une page-board séparée par variante avec le générateur statique fourni. Les trois variantes peuvent être déléguées en parallèle dans des répertoires isolés ; les écrans restent séquentiels au sein de chaque variante. Ne jamais générer une planche découpée en miniatures ni comprimer les écrans en N colonnes. Après le choix, faire approuver l'ensemble déjà généré.
 
 ### 4. Construire
 

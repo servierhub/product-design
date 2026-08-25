@@ -1,34 +1,9 @@
-# Ideate two-stage workflow — evaluation report
+# Ideate separate-screen board-page workflow — evaluation report
 
-## Scope
+The former 1024×1024 composite-board process compressed 4–6 UI miniatures and could make desktop-web concepts resemble mobile columns.
 
-Controlled comparison of the repository HEAD version of ideate against the revised version. Each agent received the exact skill content in context and was asked to describe its next actions without calling tools or ImageGen.
+The revised contract requires exactly three journeys and plans, one independent full-size image for every traversed screen of every variant, then exactly one board page per variant assembled from those files. Desktop screens use a landscape viewport; pages preserve aspect ratio on a wide scrollable or spacious wrapped canvas rather than N narrow columns.
 
-## Cases and results
+All variant sources exist before journey selection. After selection, the chosen existing set is verified and approved. Image-to-code resolves individual screen files, never only a board page or screenshot.
 
-| Case | Baseline | Revised | Result |
-|---|---|---|---|
-| New multi-step mentoring product | Selected a journey in prose, then proposed three visual treatments of fixed checkpoints | Proposed three distinct 1024×1024 end-to-end journey boards with the same start/end contract | Revised passes |
-| User selects journey board 2 | Proposed three more visual directions and stopped for another option choice | Recorded journey selection, created a 3–6 screen plan, generated one screen at a time, then stopped for screen-set approval | Revised passes |
-| Genuine single-screen modal | Correctly generated three variants of the same modal | Preserved the short path and added 1024×1024, sequential generation and absolute-path presentation | Both pass; revised is more explicit |
-| Build requested with board only | Correctly refused immediate build but gave a loose checkpoint-declination plan | Explicitly blocked build, required G2 selection, G3 screen plan, stable IDs, sequential generation and final approval | Revised passes more strongly |
-
-## Strict behavioral score
-
-- Baseline: 1/4 fully satisfies the new contract.
-- Revised: 4/4 satisfy the new contract.
-
-The baseline receives no full credit for the premature-build case because it lacks the durable screen-plan and second-approval contract, even though it correctly avoids immediate implementation.
-
-## Discriminating findings
-
-The most valuable test is journey selection. The old behavior interprets selection as a cue to compare visual directions. The revised behavior interprets selection as a transition from journey-boards-generated to journey-selected, then screen-plan-created. This is the intended mechanism.
-
-The single-screen case prevents overfitting: the revised workflow does not manufacture a journey when the target is truly isolated.
-
-## Limitations
-
-- These are instruction-following evaluations, not real image-quality evaluations.
-- ImageGen calls were intentionally not executed to avoid cost and stochastic output.
-- Visual board readability and cross-screen visual consistency still require human review during real use.
-- Trigger accuracy for all plugin skills should be benchmarked separately if routing regressions appear.
+These instruction-following checks do not prove stochastic image quality; real runs still require pixel inspection of each image and rendered inspection of each page.

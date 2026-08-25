@@ -46,7 +46,7 @@ When a comparison finds any P0/P1/P2 issue:
 A later pass must identify the earlier findings, the fixes made, and the post-fix visual evidence. Build, dependency, lint, deployment, and preview troubleshooting do not count as design-QA iterations.
 
 1. Identify the comparison target.
-   - For a multi-screen journey, compare each implemented state against its corresponding approved detailed screen source, then verify end-to-end continuity. Do not compare the implementation only against the overview journey board.
+   - For a multi-screen journey, compare each implemented state against its corresponding approved detailed screen source, then verify end-to-end continuity. Do not compare the implementation only against the board page or its screenshot.
    - Determine the source design: Figma node, image, design board, screenshot, spec, or mockup.
    - Determine the implementation: local URL, deployed URL, app screen, component, screenshot, or code-rendered view.
    - Match the same viewport, state, theme, device density, route, content, auth state, and interaction state before judging.

@@ -9,17 +9,18 @@
         "index",
         "get-context",
         "service blueprint if multi-persona",
-        "ideate: journey boards",
+        "define three journeys and plans",
+        "one full-size image per screen for every variant",
+        "one board page per variant",
         "user journey selection",
-        "screen-production plan",
-        "one image per screen",
-        "user screen-set approval",
+        "user selected screen-set approval",
         "image-to-code",
         "design-qa"
       ],
       "forbidden": [
-        "build after board selection",
-        "three images as three separate steps",
+        "build after board-page selection",
+        "Image Gen multi-screen composite",
+        "N narrow screen columns",
         "unapproved screen set"
       ]
     },
@@ -47,7 +48,7 @@
         "evidence classification",
         "assumptions ledger",
         "service blueprint hypothesis",
-        "journey boards"
+        "three variant screen sets and board pages"
       ],
       "forbidden": [
         "claim user validation",
@@ -88,10 +89,10 @@
       "name": "imagegen-capability-contract",
       "prompt": "Génère les concepts avec le provider disponible.",
       "expected_sequence": [
-        "1024x1024 default",
+        "target viewport aspect ratio",
         "low quality when supported",
-        "sequential distinct results",
-        "absolute-path embeds"
+        "sequential one-screen results",
+        "three board pages referencing separate files"
       ],
       "forbidden": [
         "unsupported 1280x1024 default",
