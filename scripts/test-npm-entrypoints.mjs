@@ -20,8 +20,8 @@ try {
   const npm = process.env.npm_execpath;
   assert.ok(npm, "npm_execpath is required when this check runs through npm");
   const result = checked(process.execPath, [npm, "--prefix", root, "run", "test:ideation-contract"], { cwd });
-  assert.match(result.stdout, /# pass \d+/);
-  assert.match(result.stdout, /# fail 0/);
+  assert.match(result.stdout, /(?:#|ℹ)\s+pass\s+\d+/u);
+  assert.match(result.stdout, /(?:#|ℹ)\s+fail\s+0/u);
   const brokenDependency = spawnSync(process.execPath, [npm, "--prefix", root, "run", "validate:skills"], {
     cwd, encoding: "utf8", env: { ...process.env, HOME: cwd, AGENT_PLUGINS_ROOT: path.join(cwd, "missing-agent-plugins") },
   });
