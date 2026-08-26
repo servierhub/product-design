@@ -15,6 +15,8 @@ const skills = readdirSync(skillsRoot, { withFileTypes: true })
 
 for (const skill of skills) {
   const result = spawnSync(process.execPath, [validator, path.join(skillsRoot, skill)], { stdio: "inherit" });
+  if (result.error) throw result.error;
+  if (result.signal) throw new Error(`Skill validator terminated by ${result.signal}: ${validator}`);
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 console.log(JSON.stringify({ status: "passed", skills }));

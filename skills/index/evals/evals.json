@@ -4,8 +4,8 @@
     {
       "id": 1,
       "name": "route-new-multistep",
-      "prompt": "@Product Design crée un onboarding bancaire en plusieurs étapes sans maquette.",
-      "expected_output": "Route index → get-context → ideate three journeys, separate full-size screen sets and three board pages; no build before journey and screen-set approvals.",
+      "prompt": "@Product Design cr\u00e9e un onboarding bancaire en plusieurs \u00e9tapes sans maquette.",
+      "expected_output": "Route index \u2192 get-context \u2192 ideate three journeys, separate full-size screen sets and three board pages; no build before journey and screen-set approvals.",
       "assertions": [
         "contains:get-context",
         "contains:ideate",
@@ -27,7 +27,7 @@
     {
       "id": 3,
       "name": "route-approved-screen-set",
-      "prompt": "@Product Design le parcours et tous les écrans détaillés sont approuvés, construis-les.",
+      "prompt": "@Product Design le parcours et tous les \u00e9crans d\u00e9taill\u00e9s sont approuv\u00e9s, construis-les.",
       "expected_output": "Route to image-to-code and later design-qa.",
       "assertions": [
         "contains:image-to-code",
@@ -37,7 +37,7 @@
     {
       "id": 4,
       "name": "route-audit-not-build",
-      "prompt": "@Product Design critique ce parcours existant et donne-moi les problèmes.",
+      "prompt": "@Product Design critique ce parcours existant et donne-moi les probl\u00e8mes.",
       "expected_output": "Route directly to audit, not get-context or design-qa.",
       "assertions": [
         "contains:audit",
@@ -53,6 +53,30 @@
         "contains:research",
         "not-contains:ideate"
       ]
+    },
+    {
+      "id": 6,
+      "name": "route-explicit-beads",
+      "prompt": "@Product Design use Beads to track this redesign epic and its dependencies.",
+      "expected_output": "Route to product-design:project-status and activate tracking within scope alongside the focused design workflow."
+    },
+    {
+      "id": 7,
+      "name": "route-planning-vocabulary-as-offer",
+      "prompt": "@Product Design define the epic, phase gates, acceptance criteria, dependencies, owners, evidence, ready/blocked state, and next task for this involved rollout.",
+      "expected_output": "Offer product-design:project-status, require confirmation before Beads mutation, and continue the design workflow."
+    },
+    {
+      "id": 8,
+      "name": "do-not-route-simple-ready-word",
+      "prompt": "@Product Design revise this one button label so it is ready for review.",
+      "expected_output": "Route the small design edit without offering project-status or Beads tracking."
+    },
+    {
+      "id": 9,
+      "name": "do-not-route-ordinary-two-step-request",
+      "prompt": "@Product Design inspect this card and suggest one visual improvement.",
+      "expected_output": "Route to the relevant focused design workflow without adding project tracking."
     }
   ]
 }

@@ -26,6 +26,8 @@ Follow [../../references/critical-overrides.md](../../references/critical-overri
 
 ## Workflow
 
+For involved multi-phase work, follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). State epic/outcome, G5 phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Mirror through `product-design:project-status` only when active; vocabulary alone requires an offer and confirmation. A Beads update never decides QA; visual and interaction evidence does.
+
 Compare the intended design to the implementation as a product-quality reviewer, not as a generic aesthetic critic. The output must be a prioritized fix list grounded in evidence from both artifacts.
 
 Apply both G5 gates in [product decision gates](../../references/product-decision-gates.md): execution quality and product-test validity. Verify the selected journey, hypothesis, evaluation slice and success criterion; primary task, realistic-enough data/states, test scenario and limitations must be explicit. A faithful implementation of the wrong or untestable journey is `blocked`. For involved work write `.gates/05-prototype-to-review.md`.

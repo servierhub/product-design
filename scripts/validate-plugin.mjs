@@ -23,6 +23,8 @@ try {
   ]) {
     const validator = resolveAgentPluginsScript("plugin-creator", script);
     const result = spawnSync(process.execPath, [validator, ...args], { stdio: "inherit" });
+    if (result.error) throw result.error;
+    if (result.signal) throw new Error(`Plugin validator terminated by ${result.signal}: ${validator}`);
     if (result.status !== 0) process.exitCode = result.status ?? 1;
   }
 } finally {

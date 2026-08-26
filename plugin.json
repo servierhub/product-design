@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "product-design",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Turn early product ideas, live URLs, and static screenshots into prototypes teams can review, refine, and carry forward. Scaffolds Vite, Next.js, Nuxt, or Astro; detects an existing design system or generates palette options when none exists; supports browser annotation on any of them, plus injection into user-provided boilerplates. Ported from OpenAI Codex product-design plugin.",
   "license": "MIT",
   "author": {

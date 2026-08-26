@@ -3,15 +3,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "validate:workflow": "node \"$(dirname \"$npm_package_json\")/scripts/validate-workflow-contract.mjs\"",
-    "validate:skills": "node \"$(dirname \"$npm_package_json\")/scripts/validate-skills.mjs\"",
-    "validate:plugin": "node \"$(dirname \"$npm_package_json\")/scripts/validate-plugin.mjs\"",
+    "validate:workflow": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-workflow-contract.mjs\"",
+    "validate:skills": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-skills.mjs\"",
+    "validate:plugin": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-plugin.mjs\"",
     "validate": "npm run validate:workflow && npm run validate:skills && npm run validate:plugin",
-    "test:bootstrap": "node --test scripts/test-bootstrap.mjs",
-    "test:annotations": "node scripts/test-annotation-handlers.mjs",
-    "test:user-context": "node scripts/test-user-context.mjs",
-    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:annotations && npm run test:user-context",
+    "test:bootstrap": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-bootstrap.mjs\"",
+    "test:annotations": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-annotation-handlers.mjs\"",
+    "test:user-context": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-user-context.mjs\"",
+    "test:journey-board": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-journey-board.mjs\"",
+    "test:ideation-contract": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-ideation-contract.mjs\"",
+    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:ideation-contract && npm run test:annotations && npm run test:user-context && npm run test:npm-entrypoints",
     "test": "npm run validate && npm run test:deterministic",
-    "test:journey-board": "node --test scripts/test-journey-board.mjs"
+    "test:npm-entrypoints": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-npm-entrypoints.mjs\""
   }
 }

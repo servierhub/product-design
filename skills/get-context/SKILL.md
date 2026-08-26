@@ -63,6 +63,10 @@ Use saved product URLs, Figma files, screenshots, reference images, codebase pat
 
 Do not inspect every saved reference. Inspect only what the current task needs.
 
+## Planning and phase status
+
+For involved multi-phase work, follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). At brief handoff, identify the epic/outcome, G1 phase gate, acceptance criteria, dependencies, ready or blocked state, owner, evidence, and next task. Explicit tracking or an applicable existing `.beads/` routes to `product-design:project-status`. Planning vocabulary alone requires an offer and confirmation before changing Beads, without delaying handoff. Skip tracking offers for simple one-shot work.
+
 ## Handoff To The Next Workflow
 
 1. When the next workflow is already clear, read that skill before sending the brief playback. Do not only name a skill you have not read.

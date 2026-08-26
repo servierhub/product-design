@@ -13,10 +13,10 @@ description: "Optional: track a Product Design project's phase (`product-design:
 
 Two independent triggers — either is sufficient on its own, do not require both:
 
-1. **Explicit.** The user names Beads, `bd`, issue tracking, or directly asks to track/plan/see status or progress on a Product Design project. The repo already having `.beads/` (an existing `bd` project) also counts as explicit — offer to add these formulas rather than starting an unrelated tracking system.
-2. **Vocabulary-based.** The user describes a Product Design project using planning/tracking vocabulary without naming Beads directly — words like *epic*, *gate*, *user story*, *success criteria*, *acceptance criteria*, *task breakdown*, *backlog*, *ready/blocked*, *dependencies between steps*. This vocabulary is a strong signal the user thinks in tracked-work terms, so offer this skill's formulas as the concrete mechanism rather than only describing phases in prose. Confirm before instantiating anything — this trigger means "offer", not "silently start tracking."
+1. **Explicit.** The user names Beads, `bd`, issue tracking, or directly asks to track/plan/see status or progress on a Product Design project. The target repo already having `.beads/` is an existing-tracker signal: for related involved work, this skill may use that tracker without initializing another one; stay within the requested scope.
+2. **Vocabulary-based.** The user describes involved multi-phase Product Design work with a planning cluster such as *epic*, *phase gate*, *acceptance criteria*, *dependencies*, *ready/blocked*, *owner*, *evidence*, or *next task*. Offer this skill, but confirm before initializing, creating, or updating Beads. This means "offer", not "silently start tracking." One isolated word is not enough.
 
-Do not bring this up unprompted on a first-time or simple one-shot prototype request that uses none of the above language. Most Product Design work does not need issue tracking, and plain phase-by-phase prose (without tracking vocabulary) is not itself a trigger — only naming Beads/bd, or using the planning vocabulary above, is.
+Follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). Do not mention tracking for a simple one-shot request, ordinary phase prose, or an incidental planning word without involved tracked-work context. Most Product Design work does not need issue tracking.
 
 ## Prerequisites
 
@@ -50,7 +50,8 @@ Both live in `../../assets/beads-formulas/*.formula.toml` and use `bd`'s real fo
    ```bash
    bd mol wisp annotate-cycle --var target="<project>" --var needs_install=<true|false> --var framework=<...>
    ```
-5. As the actual Product Design skills run (`product-design:get-context`, `product-design:ideate`, `product-design:image-to-code`, `product-design:design-qa`, `product-design:share`, `product-design:annotate`), close the matching bead step (`bd close <id> --reason "..."`) rather than leaving beads to drift from the real state. Do not batch-close several steps at once to "catch up" — close each as its real work finishes.
+5. For each active phase, keep the issue or comment explicit about epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Avoid circular dependencies: Beads mirrors the Product Design decision; it does not decide it.
+6. As the actual Product Design skills run (`product-design:get-context`, `product-design:ideate`, `product-design:image-to-code`, `product-design:design-qa`, `product-design:share`, `product-design:annotate`), close the matching bead step (`bd close <id> --reason "..."`) rather than leaving beads to drift from the real state. Do not batch-close several steps at once to "catch up" — close each as its real work finishes.
 
 ## Querying status
 

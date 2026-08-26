@@ -22,6 +22,8 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 ## Workflow
 
+For involved multi-phase work, follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). At handoff state epic/outcome, release phase gate, acceptance criteria, dependencies, ready/blocked state, owner, deployment evidence, and next task. Mirror through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Tracking is optional and never a deployment gate.
+
 1. Confirm the prototype directory and the user's preferred deployment target.
 2. If the user names Sites, Vercel, or another deployment tool, treat it as the selected hosting target only if that capability is exposed in the current Goose session.
 3. If the user did not choose a target, ask one question:

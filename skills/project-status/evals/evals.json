@@ -1,0 +1,35 @@
+{
+  "skill_name": "project-status",
+  "evals": [
+    {
+      "id": 1,
+      "name": "explicit-beads-activates-tracking",
+      "prompt": "Use Beads to track this Product Design redesign as an epic with dependencies and acceptance criteria.",
+      "expected_output": "Route to product-design:project-status and activate Beads tracking within the requested scope without asking whether tracking is wanted."
+    },
+    {
+      "id": 2,
+      "name": "planning-vocabulary-offers-before-activation",
+      "prompt": "Plan this involved Product Design rollout with an epic, phase gates, acceptance criteria, dependencies, owners, evidence, ready and blocked states, and a next task.",
+      "expected_output": "Offer product-design:project-status, ask for confirmation before creating or updating Beads, and continue the Product Design workflow while confirmation is pending."
+    },
+    {
+      "id": 3,
+      "name": "existing-beads-may-activate",
+      "prompt": "This involved multi-phase Product Design project already has a .beads directory. Continue the work and keep its status current.",
+      "expected_output": "Route to product-design:project-status and use the existing Beads project when it matches the work; do not initialize another tracker."
+    },
+    {
+      "id": 4,
+      "name": "simple-one-shot-does-not-trigger",
+      "prompt": "Make this button label clearer and tell me when it is ready.",
+      "expected_output": "Handle the simple one-shot request without mentioning project-status, Beads, an epic, or tracking."
+    },
+    {
+      "id": 5,
+      "name": "ordinary-phases-do-not-trigger",
+      "prompt": "First review this single card, then suggest one revised version.",
+      "expected_output": "Follow the small two-step request without offering or activating project tracking."
+    }
+  ]
+}

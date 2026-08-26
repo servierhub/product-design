@@ -34,6 +34,8 @@ For a mobile app or phone prototype, build and verify at 390 × 844 unless the u
 
 CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
+For involved multi-phase builds, apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). Before build and at QA handoff, record epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Use `product-design:project-status` for explicit tracking or an applicable existing `.beads/`; vocabulary alone requires an offer and confirmation before Beads changes. Tracking never blocks implementation or substitutes for gate evidence.
+
 1. Do not start unless the visual source matches the target scope. For a multi-step journey, require the user-approved ordered detailed screen set generated for each variant before board-page selection; a selected board page alone is not sufficient. For a genuinely single-screen target, one selected image, screenshot, mockup, Figma frame or Image Gen result is sufficient. Apply G4 in [product decision gates](../../references/product-decision-gates.md): journey, evaluation slice, hypothesis, exact visual targets, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
 
 2. Resolve the exact selected visual target or ordered screen set before building.

@@ -80,6 +80,107 @@
         "contains:separate",
         "contains:wide"
       ]
+    },
+    {
+      "id": 8,
+      "name": "canonical-manifest-and-servier-contract",
+      "prompt": "Prepare the three Servier desktop journeys for generation and make the run reproducible across MAI and GPT.",
+      "expected_output": "Freeze an English canonical per-screen manifest with identical service/screen contracts, Servier visual contract, prompts, ratio, references and acceptance criteria, then link its fingerprint from gates and Beads.",
+      "assertions": [
+        "contains:canonical manifest",
+        "contains:Servier visual contract",
+        "contains:fingerprint",
+        "contains:acceptance criteria"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "model-aware-same-ratio-sizes",
+      "prompt": "Compare GPT Image 2, MAI Image 2.5, and MAI Image 2.5 Flash for the same desktop journey.",
+      "expected_output": "Preserve 3:2 with 1536x1024 for GPT and 1152x768 for both MAI variants; reject unsupported or ratio-changing overrides with alternatives.",
+      "assertions": [
+        "contains:1536",
+        "contains:1152",
+        "contains:3:2",
+        "contains:alternatives"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "exact-path-three-lane-resume",
+      "prompt": "Generate V1, V2, and V3 quickly and safely, then resume if interrupted.",
+      "expected_output": "Run three isolated lanes concurrently, sequential within each variant, consume exact returned paths, persist each attempt, resume accepted predecessors, reject duplicate hashes, and assemble V1/V2/V3 deterministically.",
+      "assertions": [
+        "contains:exact",
+        "contains:sequential",
+        "contains:resume",
+        "contains:duplicate"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "fair-model-benchmark",
+      "prompt": "Tell me which model is best from a benchmark where the GPT prompt was enhanced but the MAI prompt was not and timing is missing.",
+      "expected_output": "Reject the comparison claim because conditions and evidence differ; require identical canonical inputs and complete provenance/timing/hash evidence while allowing only model-native same-ratio dimensions.",
+      "assertions": [
+        "contains:claim",
+        "contains:identical",
+        "contains:timing",
+        "contains:same-ratio"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "reject-latest-file-lookup",
+      "prompt": "The generator returned a path, but locate the newest PNG in the shared output directory instead because that is easier.",
+      "expected_output": "Refuse latest-file lookup and use only the exact returned path inside the isolated variant directory.",
+      "assertions": [
+        "contains:exact returned path",
+        "contains:isolated",
+        "not-contains:newest PNG"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "reject-continuity-violation",
+      "prompt": "A resumed Servier journey screen uses a different shell and terminology from its accepted predecessor. Treat the persisted record as accepted and continue.",
+      "expected_output": "Reject the resumed screen after reinspection because persisted acceptance cannot bypass predecessor continuity verification; do not use it as an anchor.",
+      "assertions": [
+        "contains:reject",
+        "contains:reinspection",
+        "contains:continuity",
+        "not-contains:use it as an anchor"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "reject-missing-or-mismatched-servier-contract",
+      "prompt": "Generate a Servier journey where one screen has no visual contract and another substitutes a generic blue UI contract.",
+      "expected_output": "Reject both plans before generation: every screen must contain the non-empty Servier visual contract and exactly match the frozen comparison contract.",
+      "assertions": [
+        "contains:reject",
+        "contains:Servier visual contract",
+        "contains:exactly match",
+        "contains:before generation"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "reject-each-missing-benchmark-evidence-class",
+      "prompt": "Approve a model benchmark even though individual runs omit configured/requested/resolved/effective deployment or model, dimensions or ratio, input or effective prompt provenance, provider or end-to-end timing, usage or cost availability, or the side-by-side artifact location.",
+      "expected_output": "Set claimAllowed false for each omitted evidence class independently and require configured/requested/resolved/effective deployment and model, explicit dimensions and ratio, both prompt provenance values, separate timings, explicit usage/cost availability, and one shared side-by-side artifact location.",
+      "assertions": [
+        "contains:claimAllowed false",
+        "contains:configured",
+        "contains:effective",
+        "contains:dimensions",
+        "contains:prompt provenance",
+        "contains:provider",
+        "contains:end-to-end",
+        "contains:usage",
+        "contains:cost",
+        "contains:side-by-side"
+      ]
     }
   ]
 }

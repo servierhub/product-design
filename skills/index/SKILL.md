@@ -35,7 +35,13 @@ If the user names a focused Product Design skill, load `product-design:index` fi
 
 Goose prefixes every skill in this plugin with `product-design:` once installed via `goose plugin install`. Anticipate this: cross-skill references in this plugin's documentation and prose use the qualified form (`product-design:get-context`, `product-design:ideate`, ...). Skill directory names and `SKILL.md` frontmatter `name:` stay unqualified (e.g. `name: get-context`), per the Agent Skills specification — only the runtime-exposed, loadable name is plugin-qualified.
 
-When a request matches `product-design:user-context`, `product-design:get-context`, `product-design:research`, `product-design:ideate`, `product-design:image-to-code`, `product-design:url-to-code`, `product-design:audit`, `product-design:design-qa`, or `product-design:share`, load the focused skill and follow it.
+When a request matches `product-design:user-context`, `product-design:get-context`, `product-design:research`, `product-design:ideate`, `product-design:image-to-code`, `product-design:url-to-code`, `product-design:audit`, `product-design:design-qa`, `product-design:share`, or `product-design:project-status`, load the focused skill and follow it.
+
+## Planning-aware routing
+
+Apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md) to involved multi-phase work. Explicit Beads/`bd`/tracking requests route to `product-design:project-status` and may activate tracking. An existing target-project `.beads/` may also activate tracking for related involved work. Planning vocabulary alone—an epic, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, or next task—routes to an **offer** of `product-design:project-status`; obtain confirmation before creating or updating Beads, and continue the focused workflow while waiting.
+
+Do not keyword-match isolated words. Simple one-shot work, ordinary phase prose, and incidental uses such as “the button is ready” or “the card owner” do not trigger or offer tracking. Tracking is additive and never a mandatory gate.
 
 For requests to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on an existing product experience, load `product-design:audit` directly; do not load `product-design:get-context` first. If the same request also asks to build, fix, redesign, or implement afterward, run `product-design:audit` first, then continue through the appropriate normal workflow.
 
@@ -166,4 +172,4 @@ Install the browser annotation mechanism into a user-provided or existing projec
 
 ### `product-design:project-status`
 
-Optional Beads (`bd`) tracking for a Product Design project's phase or annotation rounds. Route here when the user explicitly names Beads/bd/tracking, or when they describe the project using planning vocabulary (epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked) without naming Beads directly. Never a gate on any other skill — plain phase-by-phase prose alone does not route here.
+Optional Beads (`bd`) tracking for a Product Design project's phases or annotation rounds. Route and activate for an explicit Beads/`bd`/tracking request; an existing target-project `.beads/` may activate tracking for related involved work. For planning vocabulary alone—epic, phase gate, acceptance criteria, dependencies, ready/blocked, owner, evidence, or next task—route to an offer and require confirmation before mutating Beads. Never a gate on another skill; simple one-shot requests and isolated vocabulary do not trigger.

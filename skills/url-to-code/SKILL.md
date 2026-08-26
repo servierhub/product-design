@@ -28,6 +28,8 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 ## Workflow
 
+For an involved multi-phase clone, apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). Keep epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task explicit. Use `product-design:project-status` for explicit tracking or an applicable existing `.beads/`; vocabulary alone requires an offer and confirmation before Beads changes. Tracking must not delay capture, build, or QA.
+
 1. CRITICAL STEP: Warn the user that they must follow the target website's terms before proceeding. This workflow is only for apps and websites the user owns, or has permission to recreate.
 
 2. Open the source URL using the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight).

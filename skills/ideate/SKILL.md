@@ -26,7 +26,7 @@ Use after product-design:index and product-design:get-context have established t
 7. screen-set-approved
 8. ready-to-build
 
-Record all three plans and exact image paths/IDs in .gates/03-screen-production-plan.md, selection in .gates/02-journey-selection.md, and approval in .gates/03-visual-selection.md.
+Record all three plans and exact image paths/IDs in .gates/03-screen-production-plan.md, selection in .gates/02-journey-selection.md, and approval in .gates/03-visual-selection.md. Follow [the deterministic ideation contract](references/deterministic-ideation-contract.md): freeze its canonical manifest before generation, record its SHA-256 fingerprint in G2/G3 and the active Beads task, and keep runtime evidence separate from the frozen manifest.
 
 ## Modes
 
@@ -38,8 +38,12 @@ Use multi-step mode for more than one meaningful state, decision, handoff or scr
 2. Inspect supplied visual references directly. Stop if a named source is inaccessible.
 3. For multi-persona services, reconcile persona and backstage journeys in a service blueprint first.
 4. Reuse exact dates and common data consistently.
-5. Match image aspect ratio to the target. For desktop web, prefer a supported 1536 x 1024 landscape canvas and use 1024 x 768 as fallback. Use portrait only for mobile. Explicit user size or source fidelity wins.
-6. Request low quality when supported; otherwise omit it.
+5. Match image aspect ratio to the target using model capabilities. For desktop web at 3:2, use 1536 x 1024 for GPT Image 2 and 1152 x 768 for MAI Image 2.5 or Flash. An explicit override wins only when supported and same-ratio; otherwise fail with supported same-ratio alternatives. Unknown models require explicit capabilities. Use portrait only for mobile.
+6. Request low quality when supported; otherwise omit it. Freeze enhancement on/off in the manifest and keep it identical in comparisons.
+
+## Planning and phase status
+
+For involved multi-phase work, apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). At each transition, keep the epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task clear. Mirror this through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Never hold ideation on tracking bookkeeping.
 
 # Multi-step workflow
 
@@ -57,6 +61,8 @@ Every Image Gen call produces exactly one full-size screen image. Never generate
 
 - Run up to three isolated variant workers concurrently: V1, V2 and V3 may progress in parallel. Inside each variant, generate screens strictly sequentially (S1 → S2 → …) so accepted prior screens anchor continuity.
 - Give each worker a distinct output directory and variant-only plan. Workers must not edit shared board files or another variant directory.
+- Use only the exact path returned by each generation call. Never scan for a latest file, infer a filename, or copy from a shared directory. Verify the path stays inside the assigned variant directory, inspect it, hash it, and persist the attempt before starting its successor.
+- Reject duplicate hashes across screen IDs. Use bounded attempts from the manifest, and resume accepted screens from their persisted exact returned paths after interruption. Record provider timing, orchestration timestamps, and prompt provenance.
 - After all workers finish, the parent verifies outputs and assembles pages in deterministic V1, V2, V3 order, never completion order.
 - If delegation is unavailable, process V1 then V2 then V3 sequentially with the same per-variant contract.
 - The first accepted screen anchors that variant. Later screens preserve its shell, typography, tokens, imagery, anatomy and exact common data.
@@ -109,6 +115,12 @@ When the user selects N:
 Do not regenerate merely because the journey was selected. For one-screen feedback, regenerate only that image and update its board reference. For a changed journey, explicitly revise its plan, required images and page.
 
 After approval, route to image-to-code.
+
+## Fair cross-model benchmark
+
+Benchmark one canonical screen entry at a time in isolated directories. Send identical canonical prompt, visual contract, references, target ratio, attempts, and enhancement setting to every model. Pixel dimensions may differ only through the model-aware same-ratio mapping. Record exact returned path; configured, requested, resolved, and effective deployment and model; explicit width, height, and ratio; input and effective prompt provenance; SHA-256; separate provider and end-to-end timings; explicit usage and cost availability; and the shared side-by-side artifact location. If any condition or required evidence differs, record `claimAllowed: false` and make no comparative claim. Do not mutate official artifacts. Live parallelism evidence remains blocked on a published image-mcp version newer than `@bioinfornatics/image-mcp@0.2.1` that exposes every required observability field; see the deterministic contract for the exact release dependency.
+
+For a three-lane versus fifteen-wide experiment, compare measured provider and end-to-end timings, orchestration overhead, rate-limit/retry events, collisions, and continuity scores. Explicitly accept or reject fifteen-wide from evidence; target under 30 human minutes when capacity allows.
 
 # Single-screen exception
 
