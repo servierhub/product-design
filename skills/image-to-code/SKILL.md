@@ -129,3 +129,9 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
     - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `product-design:share` for requested hosting.
     - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
     - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).
+
+## Authoritative pre-build checks
+
+For an ideated multi-screen build, G2 must be `selected` and G3 must be `approved-for-build`; pending prose, a board alone, or Beads state cannot authorize implementation. Verify the exact evidence hashes in the authoritative `.gates/` records. Resolve visual inputs through `artifact-index.json` canonical accepted entries only—never by filenames containing `latest`, `final`, or `corrective`.
+
+Before G4, write and validate `build-handoff.json` with `validateBuildHandoff`: canonical root, target type, scaffold provenance, dependency readiness, design-system name/version, product and framework paths, owner/timestamp/evidence hash, and G1/G2/G3 statuses. Refuse a durable Servier build when this contract is incomplete. Disposable prototypes remain allowed only when explicitly typed as such.

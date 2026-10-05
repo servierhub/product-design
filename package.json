@@ -12,8 +12,9 @@
     "test:user-context": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-user-context.mjs\"",
     "test:journey-board": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-journey-board.mjs\"",
     "test:ideation-contract": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-ideation-contract.mjs\"",
-    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:ideation-contract && npm run test:annotations && npm run test:user-context && npm run test:npm-entrypoints",
+    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:ideation-contract && npm run test:workflow-evidence && npm run test:annotations && npm run test:user-context && npm run test:npm-entrypoints",
     "test": "npm run validate && npm run test:deterministic",
-    "test:npm-entrypoints": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-npm-entrypoints.mjs\""
+    "test:npm-entrypoints": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-npm-entrypoints.mjs\"",
+    "test:workflow-evidence": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-workflow-evidence-contract.mjs\""
   }
 }

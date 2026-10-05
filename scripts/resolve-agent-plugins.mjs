@@ -11,8 +11,13 @@ export function resolveAgentPluginsScript(component, script) {
   ].filter(Boolean);
 
   for (const root of roots) {
-    const candidate = path.join(root, "skills", component, "dist", "scripts", script);
-    if (existsSync(candidate)) return candidate;
+    const candidates = [
+      path.join(root, "skills", component, "dist", "scripts", script),
+      // Bundled agent-plugins installations keep runtime validators below the skill.
+      path.join(root, "skills", component, "runtime", "dist", "scripts", script),
+      path.join(root, "skills", "plugin-creator", "runtime", "related", component, "dist", "scripts", script),
+    ];
+    for (const candidate of candidates) if (existsSync(candidate)) return candidate;
   }
 
   throw new Error(

@@ -29,3 +29,7 @@ When Beads is active, mirror these fields in the relevant issue or comment. Othe
 ## Non-circular flow
 
 Product-design gates decide design readiness; Beads mirrors status and dependencies. Never make a Product Design phase wait for a Beads update, and never make a Beads task depend on proof that can only be produced after that same task closes. Missing Beads, declined tracking, or pending confirmation must not block design, build, QA, or sharing.
+
+## Gate and Beads consistency
+
+Gate evidence is authoritative; Beads is an optional mirror. Use the transaction order **evidence → `.gates/` record → Beads mirror → readiness**. Mirror the canonical gate status and evidence SHA-256. If any write fails, stop and leave downstream state untouched. Before closing a tracked phase, compare its gate, canonical status, and hash using `assertBeadsClosure`; divergence is a blocker, not a warning.

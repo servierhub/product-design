@@ -153,3 +153,7 @@ Use `passed` when there are no actionable P0/P1/P2 findings. P3 findings may rem
 Use `blocked` when actionable P0/P1/P2 findings remain and name the blocker.
 
 Return the file path with the QA report.
+
+## Fail-closed machine receipt
+
+Alongside `design-qa.md`, write `design-qa.json` and validate it with `validateDesignQaReport` from `scripts/workflow-evidence-contract.mjs` (or the installed equivalent). It must contain a matrix row for every required route/state with exact absolute source, rendered, and combined-comparison paths; integer viewport; explicit evaluations of typography, spacing, colors, images, and copy; and a runtime-console check. Record every P0/P1/P2 before/after iteration with finding, fix, and exact evidence paths. Both G5 dimensions (`execution` and `productTestValidity`) must pass and `openP0P1P2` must be zero. Missing fields, an unopenable artifact, a reproducible console error, or validator failure forces the Markdown and JSON result to `blocked`; prose containing “passed” cannot override it. Set the authoritative G5 status to `QA-passed` only after this validation succeeds.

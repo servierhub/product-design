@@ -53,3 +53,17 @@ Assess desirability 20; usability 15; user/product value 20; feasibility 15; via
 ## G7 — Production readiness
 
 Require applicable tests/checks, auth, data migrations, i18n, observability, secret handling, accessibility, performance, compliance, business acceptance, rollback and post-release measurement. Repository conventions remain authoritative.
+
+## Machine-verifiable records and transactional transitions
+
+For involved work, Markdown summaries are human views of machine-readable JSON records validated with `scripts/workflow-evidence-contract.mjs`. Every authoritative gate record uses `schemaVersion: 1`, `gate`, canonical `status` (`selected`, `approved-for-build`, `QA-passed`, or `validated`), `verdict`, `owner`, ISO timestamp, exact evidence path, and SHA-256 evidence hash. A literal word such as “passed” is never sufficient.
+
+Transitions are fail-closed and ordered: write evidence, write the authoritative `.gates/` record, mirror its status and hash to Beads when tracking is active, then write readiness. Any write failure stops the sequence. `.gates/` decides readiness; Beads only mirrors it. Refuse issue closure when gate, status, or evidence hash diverges. Never update Beads first or use a Beads status to manufacture gate evidence.
+
+### G1 boundary conditions
+
+The canonical G1 record also contains score, confidence, owner, risks, rejected alternatives, and `conditions[]`. Each condition has exactly one boundary (`ideation`, `build`, or `industrialization`) and disposition (`resolved`, `accepted-risk`, or `blocked`). An unresolved blocker prevents entry at that boundary and every later boundary, but does not falsely block an earlier phase. Resolve or explicitly re-decide the condition; do not silently carry it forward.
+
+### G4 build-handoff contract
+
+Before a durable build, validate a `G4` build-handoff record containing canonical project root, target type, scaffold provenance, dependency readiness, design-system name and version, product path, framework path, owner/timestamp/evidence hash, and passing G1/G2/G3 statuses. A durable Servier target fails closed when dependencies or its versioned design system are unresolved. A disposable prototype must still identify that target type and scaffold provenance rather than masquerading as a production handoff.

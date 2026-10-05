@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "source": "My Health Partner REX",
+  "scenarios": [
+    {"id":"ideation-source-in-slot","input":"provided target screenshot used as V2","expect":"blocked: candidates require generated-candidate provenance"},
+    {"id":"ideation-hash-collision","input":"V1 and V2 share SHA-256 without declaration","expect":"blocked"},
+    {"id":"critical-copy-illegible","input":"medical eligibility copy cannot be read","expect":"blocked"},
+    {"id":"gate-write-failure","input":"authoritative gate write throws after evidence","expect":"no Beads mirror and no readiness write"},
+    {"id":"qa-console-error","input":"reproducible TypeError with otherwise complete screenshots","expect":"blocked"},
+    {"id":"annotation-transport-only","input":"overlay POST write and guard pass, no edit cycle","expect":"valid receipt with editCycleTested false; no complete-cycle claim"},
+    {"id":"servier-handoff-incomplete","input":"durable Servier target lacks ready dependencies/design-system version","expect":"blocked"}
+  ]
+}

@@ -85,3 +85,10 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(JSON.stringify({ status: "passed", contractChecks: 46, evalFiles: evalFiles.length, evalCases }, null, 2));
+
+const evidenceContract = read("scripts/workflow-evidence-contract.mjs");
+const artifactContract = read("references/artifact-index.md");
+const regressions = JSON.parse(read("tests/evals/rex-workflow-regressions.json"));
+for (const symbol of ["validateDesignQaReport", "advanceGateTransaction", "assertBeadsClosure", "validateIdeationEvidence", "validateG1", "validateAnnotationReceipt", "validateArtifactIndex", "validateBuildHandoff"]) ok(evidenceContract.includes(`function ${symbol}`), `missing ${symbol}`);
+ok(regressions.scenarios.length === 7, "REX regression suite must cover all seven observed failures");
+ok(artifactContract.includes("Exactly one accepted artifact may be canonical"), "artifact lifecycle must have one canonical accepted artifact per purpose");

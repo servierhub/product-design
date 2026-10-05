@@ -1,6 +1,6 @@
 ---
 name: url-to-code
-description: "Clone a live URL as a runnable frontend-only local app."
+description: Clone a live URL as a runnable frontend-only local app.
 ---
 
 # URL To Code

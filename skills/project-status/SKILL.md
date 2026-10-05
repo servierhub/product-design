@@ -1,6 +1,6 @@
 ---
 name: project-status
-description: "Optional: track a Product Design project's phase (`product-design:get-context`, visual sourcing, build, `product-design:design-qa`, `product-design:share`) or annotation rounds as Beads (bd) issues, so status is queryable via `bd ready`/`bd show` instead of only living in conversation history. Triggers on two kinds of request: (1) explicit — the user names Beads, bd, issue tracking, or asks to track/plan progress; (2) vocabulary-based — the user talks in epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked, or backlog terms about a Product Design project. Never a gate — Product Design workflows run the same with or without this."
+description: 'Optional: track a Product Design project''s phase (`product-design:get-context`, visual sourcing, build, `product-design:design-qa`, `product-design:share`) or annotation rounds as Beads (bd) issues, so status is queryable via `bd ready`/`bd show` instead of only living in conversation history. Triggers on two kinds of request: (1) explicit — the user names Beads, bd, issue tracking, or asks to track/plan progress; (2) vocabulary-based — the user talks in epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked, or backlog terms about a Product Design project. Never a gate — Product Design workflows run the same with or without this.'
 ---
 
 # Project Status (Beads)

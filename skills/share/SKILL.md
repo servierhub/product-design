@@ -1,6 +1,6 @@
 ---
 name: share
-description: "Focused Product Design deployment handoff. Use only after a runnable prototype exists and the user requests sharing; require a chosen available hosting target and return a verified working URL. Goose Apps creation alone is not deployment."
+description: Focused Product Design deployment handoff. Use only after a runnable prototype exists and the user requests sharing; require a chosen available hosting target and return a verified working URL. Goose Apps creation alone is not deployment.
 ---
 
 # Share

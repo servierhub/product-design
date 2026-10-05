@@ -1,6 +1,6 @@
 ---
 name: annotate-inject
-description: "Install and verify browser annotation in an existing/user-provided boilerplate (Next.js, Nuxt, Astro, Vite, or port) after the user explicitly requests it or confirms the proposed non-trivial codebase change. Bundled Product Design templates already include annotation. The agent starts/reuses the dev server, verifies toggle + POST + inbox write, keeps it running, and returns the URL; never delegate startup commands to the user."
+description: Install and verify browser annotation in an existing/user-provided boilerplate (Next.js, Nuxt, Astro, Vite, or port) after the user explicitly requests it or confirms the proposed non-trivial codebase change. Bundled Product Design templates already include annotation. The agent starts/reuses the dev server, verifies toggle + POST + inbox write, keeps it running, and returns the URL; never delegate startup commands to the user.
 ---
 
 # Annotate Inject
@@ -76,3 +76,7 @@ Once installed, pending annotations are processed by `product-design:annotate` e
 
 - If the target project already has some other annotation/feedback mechanism, ask before installing a second one.
 - Component-name guessing (via framework internals like React fiber traversal) is only meaningfully portable to React-based UI (Next.js, Astro+React islands). Vue (Nuxt) and non-island Astro pages have no equivalent stable introspection API; those ports omit it and rely on `bbox`/`viewport`/`route` alone — say this if the user asks why Nuxt annotations don't show component names.
+
+## Verification receipt and claim boundary
+
+Injection verifies transport only: overlay, POST, inbox write, and production guard. Persist `<project-root>/.goose/annotations/annotation-verification.json` with schema version, exact project root, route, viewport, timestamp, those four transport booleans, and `editCycleTested: false`; validate it with `validateAnnotationReceipt`. Do not claim the edit cycle was tested from installation checks.

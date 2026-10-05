@@ -135,3 +135,9 @@ Generate three independent directions for the exact same screen, content, state,
 - Preserve constraints, dates and realistic readable product sizing.
 
 Done means three journeys and plans exist, every screen for every variant was generated separately, exactly three board pages were assembled from those files, one journey was selected, its screen set was approved, and G2/G3 records resolve every source.
+
+## Evidence mode, provenance, and copy contract
+
+Choose `lean` by default: compare exactly three hypotheses using one representative anchor screen each, then generate the complete selected journey. Use `full-evidence` before selection when material journey uncertainty, regulated/critical copy, high-risk interaction, or evidence needs make anchors insufficient; it costs approximately three lanes of full-screen production versus one anchor lane. After lean selection, an additional approval is required only if completing the journey materially changes the selected hypothesis, boundary, critical copy, or design-system direction.
+
+Every ideation evidence manifest declares `evidenceMode` and `mode`. `visual-and-copy` judges generated visuals and their visible copy. `composition-only` judges composition while exact words come from a required machine-readable copy manifest; it does not waive readability. Classify inputs as `source-research`, `provided-target`, or `generated-candidate`. Candidate slots accept only `generated-candidate`: source captures and provided targets may ground generation but may never be presented as generated alternatives. Hash every exact output, reject undeclared duplicate hashes, and fail when safety, dosage, consent, eligibility, or other critical product/medical copy is illegible. Validate with `validateIdeationEvidence` before presentation.

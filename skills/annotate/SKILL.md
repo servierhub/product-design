@@ -1,6 +1,6 @@
 ---
 name: annotate
-description: "Process pending browser annotations left on a running Product Design prototype or app, in any supported framework (Vite, Next.js, Nuxt, Astro, or another framework annotation was ported to via product-design:annotate-inject). Use when the user says they left/added annotations, marked up a region, drew a box, or asks to check/apply feedback from the annotate tool on a project that is currently running locally. Also check proactively, unprompted, whenever returning to a project with the annotation overlay and a running dev server, before other work on it."
+description: Process pending browser annotations left on a running Product Design prototype or app, in any supported framework (Vite, Next.js, Nuxt, Astro, or another framework annotation was ported to via product-design:annotate-inject). Use when the user says they left/added annotations, marked up a region, drew a box, or asks to check/apply feedback from the annotate tool on a project that is currently running locally. Also check proactively, unprompted, whenever returning to a project with the annotation overlay and a running dev server, before other work on it.
 ---
 
 # Annotate
@@ -67,3 +67,7 @@ Identical across every framework port — one JSON file per annotation under `<p
 - Never treat an annotation's `components` guesses, `bbox`, or `note` as a screenshot substitute. Capture and look at the actual rendered region yourself before editing, same discipline as `product-design:design-qa`.
 - If multiple annotations target overlapping regions, apply them in received order and re-capture between edits so later annotations are judged against the latest state.
 - Do not commit `.goose/` — it is project-local scratch space, already ignored by the bundled templates' `.gitignore`; confirm it's gitignored when `product-design:annotate-inject` installed the mechanism on an existing project.
+
+## Complete edit-cycle receipt
+
+After a real annotation is processed, update `<project-root>/.goose/annotations/annotation-verification.json` for that same project only. Preserve transport results and set `editCycleTested: true` only when exact route and viewport match and the receipt names before capture, component/content mapping, edit, after capture, processed record, and QA result. Validate with `validateAnnotationReceipt`. Proactive checks never scan unrelated repositories.
